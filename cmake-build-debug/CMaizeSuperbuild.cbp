@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="CMaizeSuperbuild"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\subprojects\;CMake Files\cmake-build-debug\subprojects\tmp\;CMake Files\cmake-build-debug\subprojects\tmp\CMaizeSuperbuild_core\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CMaizeSuperbuild_core">
+				<Option working_dir="/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 CMaizeSuperbuild_core"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/subprojects/tmp/CMaizeSuperbuild_core/CMaizeSuperbuild_core-cfgcmd.txt.in">
+			<Option virtualFolder="CMake Files\cmake-build-debug\subprojects\tmp\CMaizeSuperbuild_core\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

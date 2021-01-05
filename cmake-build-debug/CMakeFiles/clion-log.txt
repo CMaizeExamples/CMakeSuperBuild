@@ -1,0 +1,16 @@
+"/Users/emin/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.7660.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild
+-- Configuring done
+CMake Error at CMakeLists.txt:11 (add_library):
+  Cannot find source file:
+
+    cmake_public.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at CMakeLists.txt:11 (add_library):
+  No SOURCES given to target: CMaizeSuperbuild
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

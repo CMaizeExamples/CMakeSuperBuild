@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/CMakeFiles/CMaizeSuperbuild_core"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/CMakeFiles/CMaizeSuperbuild_core.rule"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/CMakeFiles/CMaizeSuperbuild_core-complete.rule"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/subprojects/Stamp/CMaizeSuperbuild_core/CMaizeSuperbuild_core-install.rule"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/subprojects/Stamp/CMaizeSuperbuild_core/CMaizeSuperbuild_core-mkdir.rule"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/subprojects/Stamp/CMaizeSuperbuild_core/CMaizeSuperbuild_core-download.rule"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/subprojects/Stamp/CMaizeSuperbuild_core/CMaizeSuperbuild_core-update.rule"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/subprojects/Stamp/CMaizeSuperbuild_core/CMaizeSuperbuild_core-patch.rule"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/subprojects/Stamp/CMaizeSuperbuild_core/CMaizeSuperbuild_core-configure.rule"
+		},
+		{
+			"file" : "/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/cmake-build-debug/subprojects/Stamp/CMaizeSuperbuild_core/CMaizeSuperbuild_core-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"CMaizeSuperbuild_core"
+		],
+		"name" : "CMaizeSuperbuild_core"
+	}
+}
