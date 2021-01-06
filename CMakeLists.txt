@@ -8,13 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set_property(DIRECTORY PROPERTY EP_BASE ${CMAKE_CURRENT_BINARY_DIR}/subprojects)
 
-add_library(${PROJECT_NAME} SHARED hello-world.cpp)
-
 include(GNUInstallDirs)
-
-set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-        ${CMAKE_CURRENT_SOURCE_DIR}/Shared-Library/hello-world.hpp
-        )
 
 include(ExternalProject)
 
