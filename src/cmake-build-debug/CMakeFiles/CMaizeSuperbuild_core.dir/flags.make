@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/Ma
 
 CXX_DEFINES = -DCMaizeSuperbuild_core_EXPORTS
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/Users/emin/Desktop/Research/Windus-Group/CMaizeSuperbuild/src/include 
 
