@@ -27,4 +27,4 @@ install(EXPORT ${PROJECT_NAME}-targets
         DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake
         )
 
-add_executable(hello-world hello-world.cpp)
+add_executable(CMaizeSuperbuild_core hello-world.cpp)

@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(CMaizeSuperbuild LANGUAGES CXX)
 
+list(APPEND BOOST_COMPONENTS_REQUIRED filesystem system)
+set(Boost_CMAKE_MINIMUM_REQUIRED 1.61)
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -23,3 +26,4 @@ ExternalProject_Add(
     BUILD_ALWAYS 1
     INSTALL_COMMAND ""
 )
+
