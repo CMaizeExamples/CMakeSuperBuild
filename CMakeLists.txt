@@ -32,3 +32,9 @@ ExternalProject_Add(
     BUILD_ALWAYS 1
     INSTALL_COMMAND ""
 )
+
+ExternalProject_Add(CMakePublic
+        GIT_REPOSITORY https://github.com/CMaizeExamples/CMakePublic
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTERNAL_INSTALL_LOCATION}
+        )
+include_directories(${EXTERNAL_INSTALL_LOCATION}/Shared-Library)
