@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(CMaizeSuperbuild LANGUAGES CXX)
 
+# Required to enable unit testing
+include(CTest)
+enable_testing()
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -14,6 +18,8 @@ message(STATUS "${PROJECT_NAME} staged install: ${STAGED_INSTALL_PREFIX}")
 include(GNUInstallDirs)
 
 include(ExternalProject)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 ExternalProject_Add(
     "${PROJECT_NAME}_core"

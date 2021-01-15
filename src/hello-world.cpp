@@ -4,7 +4,3 @@
 
 std::string say_hello() { return std::string("Hello, CMake superbuild!"); }
 
-int main() {
-  std::cout << say_hello() << std::endl;
-  return EXIT_SUCCESS;
-}
