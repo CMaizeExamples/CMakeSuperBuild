@@ -1,23 +1,19 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
-project(CMaizeSuperbuild LANGUAGES CXX)
+project(CMaizeSuperbuild)
 
+# Required to enable unit testing
 include(CTest)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(ExternalProject)
 
 set_property(DIRECTORY PROPERTY EP_BASE ${CMAKE_CURRENT_BINARY_DIR}/subprojects)
 
 set(STAGED_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/stage)
 message(STATUS "${PROJECT_NAME} staged install: ${STAGED_INSTALL_PREFIX}")
 
-include(GNUInstallDirs)
-
-include(ExternalProject)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+include_directories(${EXTERNAL_INSTALL_LOCATION}/Shared-Library)
 
 ExternalProject_Add(
     "${PROJECT_NAME}_core"
@@ -35,4 +31,5 @@ ExternalProject_Add(CMakePublic
         GIT_REPOSITORY https://github.com/CMaizeExamples/CMakePublic
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTERNAL_INSTALL_LOCATION}
         )
-include_directories(${EXTERNAL_INSTALL_LOCATION}/Shared-Library)
+
+ExternalProject_Add_StepDependencies(CMakePublic configure CMaizeSuperbuild_core)
