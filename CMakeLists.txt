@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 project(CMaizeSuperbuild)
 
-# Required to enable unit testing
 include(CTest)
 include(ExternalProject)
+include(FetchContent)
 
 set_property(DIRECTORY PROPERTY EP_BASE ${CMAKE_CURRENT_BINARY_DIR}/subprojects)
 
