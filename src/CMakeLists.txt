@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5.1)
 
 project(CMaizeSuperbuild_core LANGUAGES CXX)
 
