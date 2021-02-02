@@ -1,8 +1,5 @@
+#include <cstdlib>
 #include <iostream>
+#include <string>
 
-int HelloWorld (int argc, char** argv)
-{
-    std::cout << "Hello World!" << std::endl;
-    return 0;
-}
-
+std::string say_hello() { return std::string("Hello, CMake superbuild!"); }

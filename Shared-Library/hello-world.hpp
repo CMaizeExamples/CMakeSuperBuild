@@ -1,4 +1,3 @@
-#pragma once
-#include <core/version.h>
+#include <string>
 
-int HelloWorld();
+std::string say_hello();
