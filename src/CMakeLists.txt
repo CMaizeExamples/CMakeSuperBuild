@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5.1)
 
-project(CMaizeSuperbuild_core LANGUAGES CXX)
+project(CMaizeSuperbuild LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} SHARED hello-world.cpp)
 
