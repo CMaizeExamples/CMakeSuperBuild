@@ -3,6 +3,8 @@ project(CMaizeSuperbuild VERSION 1.0.0)
 
 include(ExternalProject)
 
+include(GNUInstallDirs)
+
 ExternalProject_Add(
     "${PROJECT_NAME}_core"
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src"
