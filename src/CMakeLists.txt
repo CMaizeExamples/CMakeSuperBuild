@@ -26,5 +26,3 @@ install(EXPORT ${PROJECT_NAME}-targets
         FILE ${PROJECT_NAME}Config.cmake
         DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake
         )
-
-
