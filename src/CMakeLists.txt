@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.5.1)
 
 project(CMaizeSuperbuild LANGUAGES CXX)
 
+include(ExternalProject)
+include(GNUInstallDirs)
+
+
 add_library(${PROJECT_NAME} SHARED hello-world.cpp)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
