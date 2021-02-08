@@ -5,11 +5,17 @@ include(ExternalProject)
 
 include(GNUInstallDirs)
 
+set(
+        CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/stage"
+        CACHE STRING "Stage Install Location"
+)
+
 ExternalProject_Add(
     "${PROJECT_NAME}_core"
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src"
     CMAKE_ARGS -DCMAKE_CXX_COMPILER="${CMAKE_CXX_COMPILER}"
                -DCMAKE_CXX_STANDARD="${CMAKE_CXX_STANDARD}"
+               -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
     CMAKE_CACHE_ARGS -DCMAKE_CXX_FLAGS:STRING="${CMAKE_CXX_FLAGS}"
     BUILD_ALWAYS 1
     INSTALL_COMMAND ""
