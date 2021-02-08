@@ -1,4 +1,4 @@
-project(CMaizeSuperbuild LANGUAGES CXX)
+project(HelloWorld LANGUAGES CXX)
 
 include(ExternalProject)
 include(GNUInstallDirs)
