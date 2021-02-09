@@ -7,7 +7,6 @@ include(GNUInstallDirs)
 
 set(
         STAGING_DIRECTORY "${CMAKE_BINARY_DIR}/stage/"
-        CACHE STRING "Stage Install Location"
 )
 
 ExternalProject_Add(
