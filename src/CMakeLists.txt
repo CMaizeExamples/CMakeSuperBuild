@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION ${CMAKE_VERSION})
 project(HelloWorld LANGUAGES CXX)
 
 include(ExternalProject)
