@@ -5,7 +5,7 @@ include(ExternalProject)
 include(GNUInstallDirs)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-        ${CMAKE_CURRENT_SOURCE_DIR}/Shared-Library/hello-world.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp
         )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
