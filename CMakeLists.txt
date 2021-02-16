@@ -19,7 +19,3 @@ ExternalProject_Add(
     BUILD_ALWAYS 1
     INSTALL_COMMAND ""
 )
-
-ExternalProject_Get_Property(${PROJECT_NAME}_core install_dir)
-
-include_directories(${CMAKE_BINARY_DIR}/stage)
