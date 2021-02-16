@@ -9,6 +9,10 @@ set(
         STAGING_DIRECTORY "${CMAKE_BINARY_DIR}/stage/"
 )
 
+set(
+        INCLUDE_DIRECTORY hello_world/include
+)
+
 ExternalProject_Add(
     "${PROJECT_NAME}_core"
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world/src"
@@ -18,4 +22,10 @@ ExternalProject_Add(
     CMAKE_CACHE_ARGS -DCMAKE_CXX_FLAGS:STRING="${CMAKE_CXX_FLAGS}"
     BUILD_ALWAYS 1
     INSTALL_COMMAND ""
+)
+
+add_executable(
+        HelloWorld
+        hello_world/src/hello-world.cpp
+        ${INCLUDE_DIRECTORY}/hello-world.hpp
 )
