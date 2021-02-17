@@ -23,9 +23,3 @@ ExternalProject_Add(
     BUILD_ALWAYS 1
     INSTALL_COMMAND ""
 )
-
-add_executable(
-        HelloWorld
-        hello_world/src/hello-world.cpp
-        ${INCLUDE_DIRECTORY}/hello-world.hpp
-)
