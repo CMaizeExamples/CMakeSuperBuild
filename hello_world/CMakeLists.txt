@@ -4,6 +4,10 @@ project(HelloWorld LANGUAGES CXX)
 include(ExternalProject)
 include(GNUInstallDirs)
 
+add_subdirectory(src)
+add_subdirectory(include)
+
+
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
         include/hello-world.hpp
         )

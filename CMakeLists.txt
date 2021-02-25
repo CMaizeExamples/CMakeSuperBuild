@@ -15,7 +15,7 @@ set(
 
 ExternalProject_Add(
     "${PROJECT_NAME}_core"
-    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world/src"
+    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world"
     CMAKE_ARGS -DCMAKE_CXX_COMPILER="${CMAKE_CXX_COMPILER}"
                -DCMAKE_CXX_STANDARD="${CMAKE_CXX_STANDARD}"
                -DCMAKE_INSTALL_PREFIX="${STAGING_DIRECTORY}"
