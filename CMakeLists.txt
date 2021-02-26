@@ -1,8 +1,14 @@
 cmake_minimum_required(VERSION 3.5.1)
+
+set(CMAKE_C_COMPILER "/usr/local/bin/gcc")
+set(CMAKE_CXX_COMPILER "/usr/local/bin/g++")
+
 project(CMaizeSuperbuild VERSION 1.0.0)
 
 include(ExternalProject)
 include(GNUInstallDirs)
+
+
 set(
         STAGING_DIRECTORY "${CMAKE_BINARY_DIR}/stage/"
 )
