@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION ${CMAKE_VERSION})
+
+SET(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR})
+
 project(HelloWorld LANGUAGES CXX)
 
 include(GNUInstallDirs)
 
-add_subdirectory(src)
-add_subdirectory(include)
-
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-        include/hello-world.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp
         )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
