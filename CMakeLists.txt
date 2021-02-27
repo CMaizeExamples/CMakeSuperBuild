@@ -1,27 +1,20 @@
 cmake_minimum_required(VERSION 3.5.1)
+project(CMaizeSuperbuild VERSION 1.0.0 LANGUAGES CXX)
 
-project(CMaizeSuperbuild VERSION 1.0.0)
+include(ExternalProject) # For ExternalProject_Add command
 
-include(ExternalProject)
-include(GNUInstallDirs)
+# This is where we will install artifacts during the build stage
+set(stage_directory "${CMAKE_BINARY_DIR}/stage/${CMAKE_INSTALL_PREFIX}")
 
-
-set(
-        STAGING_DIRECTORY "${CMAKE_BINARY_DIR}/stage/"
-)
-
+# Builds the main library and installs it to the staging directory
 ExternalProject_Add(
-        "${PROJECT_NAME}_core"
-        SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world"
-        DOWNLOAD_DIR "${STAGING_DIRECTORY}"
-        INSTALL_DIR "${CMAKE_INSTALL_PREFIX}"
-        CMAKE_ARGS -DCMAKE_CXX_COMPILER="${CMAKE_CXX_COMPILER}"
-        -DCMAKE_CXX_STANDARD="${CMAKE_CXX_STANDARD}"
-        -DCMAKE_INSTALL_PREFIX="${STAGING_DIRECTORY}"
-        CMAKE_CACHE_ARGS -DCMAKE_CXX_FLAGS:STRING="${CMAKE_CXX_FLAGS}"
-        BUILD_ALWAYS 1
-        INSTALL_COMMAND ""
+    "${PROJECT_NAME}_core"
+    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world"
+    CMAKE_ARGS -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+	       -DCMAKE_INSTALL_PREFIX=${stage_directory}
+    BUILD_ALWAYS 1
 )
 
-INSTALL(DIRECTORY ${CMAKE_BINARY_DIR}/stage/${CMAKE_INSTALL_PREFIX}/
-        DESTINATION ${CMAKE_INSTALL_PREFIX})
+# Installing a superbuild just means copying the stage directory to its final
+# location
+INSTALL(DIRECTORY "${stage_directory}/" DESTINATION ${CMAKE_INSTALL_PREFIX})
