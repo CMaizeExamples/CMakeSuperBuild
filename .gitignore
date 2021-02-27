@@ -1,3 +1,12 @@
+# Common build directories
+build/
+
+# Common "in-source" install directories
+install/
+
+# Common CMake toolchain names
+toolchain.cmake
+
 # Created by https://www.toptal.com/developers/gitignore/api/clion,cmake
 # Edit at https://www.toptal.com/developers/gitignore?templates=clion,cmake
 
