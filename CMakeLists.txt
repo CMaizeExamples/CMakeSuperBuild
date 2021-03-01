@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.1)
-project(CMaizeSuperbuild VERSION 1.0.0 LANGUAGES CXX)
+project(CMaizeSuperbuild VERSION 1.0.1 LANGUAGES CXX)
 
 include(ExternalProject) # For ExternalProject_Add command
 
