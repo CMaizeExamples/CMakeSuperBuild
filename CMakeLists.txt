@@ -15,7 +15,7 @@ ExternalProject_Add(
     BUILD_ALWAYS 1
 )
 
-# Builds the CMakePublic library using the external project add function
+# Builds the CMakePublic library using the external project add function, and installs to the staging directory
 ExternalProject_Add(CMakePublic
 		GIT_REPOSITORY https://github.com/CMaizeExamples/CMakePublic
 		CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${stage_directory}
