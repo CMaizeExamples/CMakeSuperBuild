@@ -15,6 +15,12 @@ ExternalProject_Add(
     BUILD_ALWAYS 1
 )
 
+# Builds the CMakePublic library using the external project add function
+ExternalProject_Add(CMakePublic
+		GIT_REPOSITORY https://github.com/CMaizeExamples/CMakePublic
+		CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${stage_directory}
+		)
+
 # Installing a superbuild just means copying the stage directory to its final
 # location
 INSTALL(DIRECTORY "${stage_directory}/" DESTINATION ${CMAKE_INSTALL_PREFIX})
