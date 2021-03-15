@@ -7,11 +7,13 @@ project(HelloWorld LANGUAGES CXX)
 # Used to deduce the directories for installation
 include(GNUInstallDirs)
 
+
 # Library names should be filesystem friendly name (so not case-sensitive)
 set(lib_name hello_world)
 
 # Declares a one-source library
 add_library(${lib_name} "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.cpp")
+
 
 # Declares that are library has one public header file
 set_target_properties(
