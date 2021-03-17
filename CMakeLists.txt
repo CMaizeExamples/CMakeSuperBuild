@@ -21,7 +21,6 @@ ExternalProject_Add(CMakePublic
 		CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${stage_directory}
 		)
 
-ExternalProject_Add_Step("${PROJECT_NAME}_core" DEPENDS cmake_public.hpp)
 
 # Installing a superbuild just means copying the stage directory to its final
 # location
