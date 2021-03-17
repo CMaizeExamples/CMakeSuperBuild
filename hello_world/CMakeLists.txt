@@ -14,8 +14,6 @@ set(lib_name hello_world)
 # Declares a one-source library
 add_library(${lib_name} "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.cpp")
 
-add_library(${lib2_name} "${CMAKE_CURRENT_SOURCE_DIR}/../CMakePublic/src/cmake_public.cpp")
-
 
 # Declares that are library has one public header file
 set_target_properties(
@@ -23,23 +21,11 @@ set_target_properties(
     "${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp"
 )
 
-set_target_properties(
-        ${lib2_name} PROPERTIES PUBLIC_HEADER
-        "${CMAKE_CURRENT_SOURCE_DIR}/../CMakePublic/include/hello-world.hpp"
-)
-
 # Tells CMake where header files the target depends on can be found
 target_include_directories(
     ${lib_name} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
     $<INSTALL_INTERFACE:include/>
-)
-
-
-target_include_directories(
-        ${lib2_name} PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
-        $<INSTALL_INTERFACE:include/>
 )
 
 # Installs the library and header files and associates it with an export target
@@ -53,26 +39,10 @@ install(
     RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
 )
 
-install(
-        TARGETS ${lib2_name}
-        EXPORT "${lib2_name}-targets"
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
-)
-
 # Installs the export target
 install(
     EXPORT ${lib_name}-targets
     NAMESPACE ${lib_name}::
     FILE ${lib_name}Config.cmake
     DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/cmake
-)
-
-install(
-        EXPORT ${lib2_name}-targets
-        NAMESPACE ${lib2_name}::
-        FILE ${lib2_name}Config.cmake
-        DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/cmake
 )
