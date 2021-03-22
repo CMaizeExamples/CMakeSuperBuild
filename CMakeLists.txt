@@ -10,7 +10,7 @@ set(stage_directory "${CMAKE_BINARY_DIR}/stage/${CMAKE_INSTALL_PREFIX}")
 ExternalProject_Add(CMakePublic
 		GIT_REPOSITORY https://github.com/CMaizeExamples/CMakePublic
 		CMAKE_ARGS -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-			-DCMAKE_INSTALL_PREFIX=${stage_directory}
+		-DCMAKE_INSTALL_PREFIX=${stage_directory}
 		BUILD_ALWAYS 1
 		)
 
@@ -18,7 +18,7 @@ ExternalProject_Add(CMakePublic
 ExternalProject_Add(
     	"${PROJECT_NAME}_core"
     	SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world"
-		DEPENDS CMakePublic
+		DEPENDS cmake_public.hpp
     	CMAKE_ARGS -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
 	       -DCMAKE_INSTALL_PREFIX=${stage_directory}
     	BUILD_ALWAYS 1
