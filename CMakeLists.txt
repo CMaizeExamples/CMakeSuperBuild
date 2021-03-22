@@ -21,11 +21,6 @@ ExternalProject_Add(CMakePublic
 		CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${stage_directory}
 		)
 
-ExternalProject_Add_StepTargets(CMakePublic configure build install)
-ExternalProject_Add_StepDependencies(CMakePublic install CMakePublic-build)
-ExternalProject_Add_StepDependencies(CMakePublic build CMakePublic-configure)
-
-
 # Installing a superbuild just means copying the stage directory to its final
 # location
 INSTALL(DIRECTORY "${stage_directory}/" DESTINATION ${CMAKE_INSTALL_PREFIX})
