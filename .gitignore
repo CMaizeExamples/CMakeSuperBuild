@@ -134,3 +134,11 @@ CMakeUserPresets.json
 *-prefix/
 
 # End of https://www.toptal.com/developers/gitignore/api/clion,cmake
+
+.vscode/*
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+# https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore
