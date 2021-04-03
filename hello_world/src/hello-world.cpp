@@ -1,8 +1,8 @@
 #include "hello-world.hpp"
-#include <CMakePublic/cmake_public.hpp>
+#include "cmake_public.hpp"
 
 std::string say_goodbye() {
-    int val = cmake_public::call_cmake_public();
+    int val = call_cmake_public();
     std::string str = std::to_string(val);
     return (std::string("Goodbye from CMake Public! ") + str);
 }

@@ -4,6 +4,12 @@ cmake_minimum_required(VERSION "${CMAKE_VERSION}")
 
 project(HelloWorld LANGUAGES CXX)
 
+# Can be generalized to CMAKE_PREFIX_PATH for multiple dependencies
+set(CMAKE_PREFIX_PATH "${CMAKE_INSTALL_PREFIX}/lib/cmake")
+
+# Find external module
+find_package(CMakePublic CONFIG REQUIRED)
+
 # Used to deduce the directories for installation
 include(GNUInstallDirs)
 
@@ -13,7 +19,10 @@ set(lib_name hello_world)
 # Declares a one-source library
 add_library(${lib_name} "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.cpp")
 
-# Declares that are library has one public header file
+# Add library dependencies
+target_link_libraries(${lib_name} PUBLIC CMakePublic::CMakePublic)
+
+# Declares that this library has one public header file
 set_target_properties(
     ${lib_name} PROPERTIES PUBLIC_HEADER
     "${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp"
@@ -23,7 +32,7 @@ set_target_properties(
 target_include_directories(
     ${lib_name} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
-    $<INSTALL_INTERFACE:include/>
+    $<INSTALL_INTERFACE:include>
 )
 
 # Installs the library and header files and associates it with an export target
