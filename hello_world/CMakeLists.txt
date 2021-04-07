@@ -4,10 +4,8 @@ cmake_minimum_required(VERSION "${CMAKE_VERSION}")
 
 project(HelloWorld LANGUAGES CXX)
 
-# Can be generalized to CMAKE_PREFIX_PATH for multiple dependencies
-set(CMAKE_PREFIX_PATH "${CMAKE_INSTALL_PREFIX}/lib/cmake")
-
-# Find external module
+# Find external module CMakePublic
+# Location to config file given by CMAKE_PREFIX_PATH
 find_package(CMakePublic CONFIG REQUIRED)
 
 # Used to deduce the directories for installation
