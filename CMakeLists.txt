@@ -8,7 +8,7 @@ set(stage_directory "${CMAKE_BINARY_DIR}/stage/${CMAKE_INSTALL_PREFIX}")
 set(CMAKE_BUILD_TYPE_INIT "Release")
 
 # Add cmake config location to paths to search
-list(APPEND CMAKE_PREFIX_PATH ${stage_directory}/lib/cmake)
+list(APPEND CMAKE_PREFIX_PATH ${stage_directory})
 
 ## External project ##
 include(ExternalProject)
