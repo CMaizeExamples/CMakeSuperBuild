@@ -1,3 +1,7 @@
+/*
+ *  This file tests to see if hello-world runs without errors
+ */
+
 #include <iostream>
 #include "hello-world/hello-world.hpp"
 

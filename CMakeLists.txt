@@ -10,9 +10,9 @@ set(CMAKE_BUILD_TYPE_INIT "Release")
 # Add cmake config location to paths to search
 list(APPEND CMAKE_PREFIX_PATH ${stage_directory})
 
-## External project ##
 include(ExternalProject)
 
+# Add project with no dependencies from git
 ExternalProject_Add(
     CMakePublic
     GIT_REPOSITORY "https://github.com/CMaizeExamples/CMakePublic"
@@ -24,6 +24,7 @@ ExternalProject_Add(
 )
 
 # Builds the main library and installs it to the staging directory
+# Allows CMakePublic to build first since it's a dependency
 ExternalProject_Add(
     "${PROJECT_NAME}_core"
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world"
@@ -40,10 +41,14 @@ ExternalProject_Add(
 # location
 INSTALL(DIRECTORY "${stage_directory}/" DESTINATION ${CMAKE_INSTALL_PREFIX})
 
-# Add Testing
+# Add testing support
 include(CTest)
 
+# Building the tests is on by default and can be turned off
+# by adding -DBUILD_TESTING=OFF when running cmake
 if(BUILD_TESTING)
+
+    # Testing doesn't need to be installed so it's overwritten with an echo
     ExternalProject_Add(
         "${PROJECT_NAME}_test"
         SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests"
@@ -56,5 +61,7 @@ if(BUILD_TESTING)
         BUILD_ALWAYS ON
     )
 
+    # CMake doesn't know where the test executable is at this point
+    # so it needs the full path. Not sure how to change that.
     add_test(myTest "${CMAKE_BINARY_DIR}/${PROJECT_NAME}_test-prefix/src/${PROJECT_NAME}_test-build/SuperTest")
 endif()
