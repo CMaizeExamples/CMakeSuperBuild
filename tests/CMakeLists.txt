@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION "${CMAKE_VERSION}")
 
 project(SuperTest LANGUAGES CXX)
 
-#find_package(HelloWorld CONFIG REQUIRED)
+find_package(CMakePublic CONFIG REQUIRED)
+find_package(HelloWorld CONFIG REQUIRED)
 
 add_executable(${PROJECT_NAME} test.cpp)
-#target_link_libraries(${PROJECT_NAME} PUBLIC HelloWorld::HelloWorld)
+target_link_libraries(${PROJECT_NAME} PUBLIC HelloWorld::HelloWorld)
 
 # install(
 #     TARGETS ${PROJECT_NAME}

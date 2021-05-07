@@ -28,10 +28,11 @@ ExternalProject_Add(
     "${PROJECT_NAME}_core"
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world"
     CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+	    -DCMAKE_INSTALL_PREFIX:PATH=${stage_directory}
+        -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}
     DEPENDS CMakePublic
-    STEP_TARGETS build
-    EXCLUDE_FROM_ALL TRUE
     BUILD_ALWAYS ON
 )
 
@@ -50,12 +51,11 @@ ExternalProject_Add(
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-        -DCMAKE_INSTALL_PREFIX:PATH=${stage_directory}
+	    -DCMAKE_INSTALL_PREFIX:PATH=${stage_directory}
         -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}
     #DEPENDS "${PROJECT_NAME}_core"
     INSTALL_COMMAND cmake -E echo "Skipping install step."
     BUILD_ALWAYS ON
 )
 
-add_test(myTest ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_test-prefix/src/${PROJECT_NAME}_test-build/SuperTest)
-
+add_test(myTest "${CMAKE_BINARY_DIR}/${PROJECT_NAME}_test-prefix/src/${PROJECT_NAME}_test-build/SuperTest")
