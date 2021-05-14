@@ -58,10 +58,19 @@ if(BUILD_TESTING)
             -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}
         DEPENDS "${PROJECT_NAME}_core"
         INSTALL_COMMAND cmake -E echo "Skipping install step."
+        TEST_COMMAND
         BUILD_ALWAYS ON
     )
 
     # CMake doesn't know where the test executable is at this point
     # so it needs the full path. Not sure how to change that.
-    add_test(myTest "${CMAKE_BINARY_DIR}/${PROJECT_NAME}_test-prefix/src/${PROJECT_NAME}_test-build/SuperTest")
+    # add_test(myTest "${CMAKE_BINARY_DIR}/${PROJECT_NAME}_test-prefix/src/${PROJECT_NAME}_test-build/SuperTest")
+    # add_test(
+    #     NAME superbuild_test
+    #     COMMAND new_test
+    #     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_test-prefix/src/${PROJECT_NAME}_test-build
+    # )
+    
+    file(WRITE ${CMAKE_BINARY_DIR}/CTestTestfile.cmake "Hello")
+    
 endif()
