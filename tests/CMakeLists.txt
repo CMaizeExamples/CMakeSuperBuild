@@ -16,3 +16,7 @@ include(CTest)
 
 # Add test to this build directory and link to it from the superbuild
 add_test(NewTest ${PROJECT_NAME})
+set_tests_properties(NewTest
+    PROPERTIES
+    PASS_REGULAR_EXPRESSION "Hello, CMake superbuild!\nGoodbye from CMake Public! 3\n"
+)
