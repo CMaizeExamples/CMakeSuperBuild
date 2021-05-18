@@ -11,5 +11,8 @@ add_executable(${PROJECT_NAME} test.cpp)
 # Link the hello-world library while compiling
 target_link_libraries(${PROJECT_NAME} PUBLIC HelloWorld::HelloWorld)
 
+# Add testing support
+include(CTest)
+
 # Add test to this build directory and link to it from the superbuild
 add_test(NewTest ${PROJECT_NAME})

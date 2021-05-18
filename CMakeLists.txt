@@ -41,11 +41,8 @@ ExternalProject_Add(
 # location
 INSTALL(DIRECTORY "${stage_directory}/" DESTINATION ${CMAKE_INSTALL_PREFIX})
 
-# Add testing support
-include(CTest)
-
-# Building the tests is on by default and can be turned off
-# by adding -DBUILD_TESTING=OFF when running cmake
+# Building the tests is off by default and can be turned on
+# by adding -DBUILD_TESTING=ON when running cmake
 if(BUILD_TESTING)
 
     # Testing doesn't need to be installed so it's overwritten with an echo
@@ -62,15 +59,8 @@ if(BUILD_TESTING)
         BUILD_ALWAYS ON
     )
 
-    # CMake doesn't know where the test executable is at this point
-    # so it needs the full path. Not sure how to change that.
-    # add_test(myTest "${CMAKE_BINARY_DIR}/${PROJECT_NAME}_test-prefix/src/${PROJECT_NAME}_test-build/SuperTest")
-    # add_test(
-    #     NAME superbuild_test
-    #     COMMAND new_test
-    #     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_test-prefix/src/${PROJECT_NAME}_test-build
-    # )
-    
-    file(WRITE ${CMAKE_BINARY_DIR}/CTestTestfile.cmake "Hello")
+    # Include directory that the test is built in
+    ExternalProject_Get_Property(${PROJECT_NAME}_test binary_dir)
+    file(APPEND ${CMAKE_BINARY_DIR}/CTestTestfile.cmake "SUBDIRS(${binary_dir})")
     
 endif()
