@@ -15,15 +15,17 @@ include(GNUInstallDirs)
 #set(lib_name hello-world)
 
 # Declares a one-source library
-add_library(${PROJECT_NAME} "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.cpp")
+add_library(${PROJECT_NAME} STATIC "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.cpp")
 
 # Add library dependencies
 target_link_libraries(${PROJECT_NAME} PUBLIC CMakePublic::CMakePublic)
 
 # Declares that this library has one public header file
 set_target_properties(
-    ${PROJECT_NAME} PROPERTIES PUBLIC_HEADER
-    "${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp"
+    ${PROJECT_NAME}
+    PROPERTIES
+        PUBLIC_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp"
+        LINK_DEPENDS #do this
 )
 
 # Tells CMake where header files the target depends on can be found
