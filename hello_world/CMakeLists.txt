@@ -11,9 +11,6 @@ find_package(CMakePublic CONFIG REQUIRED)
 # Used to deduce the directories for installation
 include(GNUInstallDirs)
 
-# Library names should be filesystem friendly name (so not case-sensitive)
-#set(lib_name hello-world)
-
 # Declares a one-source library
 add_library(${PROJECT_NAME} STATIC "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.cpp")
 
@@ -21,16 +18,13 @@ add_library(${PROJECT_NAME} STATIC "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.
 target_link_libraries(${PROJECT_NAME} PUBLIC CMakePublic::CMakePublic)
 
 # Declares that this library has one public header file
-set_target_properties(
-    ${PROJECT_NAME}
+set_target_properties(${PROJECT_NAME}
     PROPERTIES
         PUBLIC_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp"
-        LINK_DEPENDS #do this
 )
 
 # Tells CMake where header files the target depends on can be found
-target_include_directories(
-    ${PROJECT_NAME} PUBLIC
+target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
     $<INSTALL_INTERFACE:include>
 )
