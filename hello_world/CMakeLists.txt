@@ -24,9 +24,10 @@ set_target_properties(${PROJECT_NAME}
 )
 
 # Tells CMake where header files the target depends on can be found
-target_include_directories(${PROJECT_NAME} PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
-    $<INSTALL_INTERFACE:include>
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
+        $<INSTALL_INTERFACE:include>
 )
 
 # Installs the library and header files and associates it with an export target
@@ -38,12 +39,26 @@ install(
     ARCHIVE DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/helloworld
     LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/helloworld
     RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}/helloworld
+
 )
 
 # Installs the export target
 install(
     EXPORT ${PROJECT_NAME}-targets
     NAMESPACE ${PROJECT_NAME}::
-    FILE ${PROJECT_NAME}Config.cmake
+    #FILE ${PROJECT_NAME}Config.cmake
+    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/helloworld/cmake
+)
+
+include(CMakePackageConfigHelpers)
+
+configure_package_config_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
+    "${CMAKE_INSTALL_FULL_LIBDIR}/helloworld/cmake/helloworldConfig.cmake"
+    INSTALL_DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/helloworld/cmake
+)
+
+install(FILES
+    "${CMAKE_INSTALL_FULL_LIBDIR}/helloworld/cmake/helloworldConfig.cmake"
     DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/helloworld/cmake
 )
