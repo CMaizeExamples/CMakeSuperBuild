@@ -142,3 +142,5 @@ CMakeUserPresets.json
 .history/
 
 # https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore
+
+demo/

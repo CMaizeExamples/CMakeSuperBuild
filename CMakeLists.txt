@@ -43,6 +43,7 @@ INSTALL(DIRECTORY "${stage_directory}/" DESTINATION ${CMAKE_INSTALL_PREFIX})
 
 # Building the tests is off by default and can be turned on
 # by adding -DBUILD_TESTING=ON when running cmake
+
 if(BUILD_TESTING)
 
     # Testing doesn't need to be installed so it's overwritten with an echo
