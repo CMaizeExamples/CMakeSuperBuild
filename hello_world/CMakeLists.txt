@@ -8,7 +8,7 @@ project(HelloWorld LANGUAGES CXX)
 # Location to config file given by CMAKE_PREFIX_PATH
 find_package(CMakePublic CONFIG REQUIRED)
 
-# Allows user to specify install dirs.
+# Allows user to specify install dirs
 include(GNUInstallDirs)
 
 # Declares a one-source library
@@ -24,7 +24,7 @@ set_target_properties(${PROJECT_NAME}
 )
 
 # Tells cmake that the header file can be found in hello_world/include during build
-# and then install_prefix/include during install.
+# and then install_prefix/include during install
 target_include_directories(${PROJECT_NAME}
     PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
@@ -36,43 +36,42 @@ target_include_directories(${PROJECT_NAME}
 install(
     TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_NAME}-targets
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/helloworld
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    # Were to install the header file to.
+    # Were to install the header file to
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     NAMELINK_COMPONENT HelloWorld
-    # Where to install the .dll/.so or executables to.
+    # Where to install the .dll/.so or executables to
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-# Exports the HelloWorld target.
-# Tells CMake where to find files and build this project.
+# Exports the HelloWorld target
+# Tells CMake where to find files and build this project
 install(
     EXPORT ${PROJECT_NAME}-targets
     NAMESPACE ${PROJECT_NAME}::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/helloworld
 )
 
-# Install header
-install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-  FILES_MATCHING
-  PATTERN hello-world.hpp
-)
+
+#message("HELLO: ${CMAKE_CURRENT_LIST_DIR}")
+
+# Install header(s)
+# install(FILES ${CMAKE_CURRENT_LIST_DIR}/include/hello-world.hpp
+#   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+# )
 
 include(CMakePackageConfigHelpers)
 
-message("HELLO: ${PROJECT_BINARY_DIR}")
-
-# Grab config template and add extra logic to it.
-# Config template has info on dependencies.
+# Grab config template and add extra logic to it
+# Config template has info on dependencies
 configure_package_config_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
     "${PROJECT_BINARY_DIR}/helloworldConfig.cmake"
     INSTALL_DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/cmake/helloworld
 )
 
-# Export package config file.
+# Export package config file
 install(FILES
     "${PROJECT_BINARY_DIR}/helloworldConfig.cmake"
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/helloworld
