@@ -36,13 +36,14 @@ target_include_directories(${PROJECT_NAME}
 install(
     TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_NAME}-targets
+    # Where to install the header file to
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/helloworld
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    # Were to install the header file to
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    NAMELINK_COMPONENT HelloWorld
-    # Where to install the .dll/.so or executables to
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    # Where to install the static libraries (.a) to
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld
+    # Where to install the dynamic libraries (.dll/.so) to
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld
+    # Where to install the executalbe to
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}/helloworld
 )
 
 # Exports the HelloWorld target
@@ -50,7 +51,7 @@ install(
 install(
     EXPORT ${PROJECT_NAME}-targets
     NAMESPACE ${PROJECT_NAME}::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/helloworld
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld/cmake
 )
 
 
@@ -65,14 +66,15 @@ include(CMakePackageConfigHelpers)
 
 # Grab config template and add extra logic to it
 # Config template has info on dependencies
+set(config_file_name "${PROJECT_BINARY_DIR}/helloworld-config.cmake")
 configure_package_config_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
-    "${PROJECT_BINARY_DIR}/helloworldConfig.cmake"
+    "${config_file_name}"
     INSTALL_DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/cmake/helloworld
 )
 
 # Export package config file
 install(FILES
-    "${PROJECT_BINARY_DIR}/helloworldConfig.cmake"
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/helloworld
+    "${config_file_name}"
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld/cmake
 )
