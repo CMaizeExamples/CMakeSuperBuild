@@ -4,43 +4,77 @@ cmake_minimum_required(VERSION "${CMAKE_VERSION}")
 
 project(HelloWorld LANGUAGES CXX)
 
-# Used to deduce the directories for installation
+# Find external module CMakePublic
+# Location to config file given by CMAKE_PREFIX_PATH
+find_package(CMakePublic CONFIG REQUIRED)
+
+# Allows user to specify install dirs
 include(GNUInstallDirs)
 
-# Library names should be filesystem friendly name (so not case-sensitive)
-set(lib_name hello_world)
-
 # Declares a one-source library
-add_library(${lib_name} "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.cpp")
+add_library(${PROJECT_NAME} STATIC "${CMAKE_CURRENT_SOURCE_DIR}/src/hello-world.cpp")
 
-# Declares that are library has one public header file
-set_target_properties(
-    ${lib_name} PROPERTIES PUBLIC_HEADER
-    "${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp"
+# Add library dependencies
+target_link_libraries(${PROJECT_NAME} PUBLIC CMakePublic::CMakePublic)
+
+# Declares that this library has one public header file
+set_target_properties(${PROJECT_NAME}
+    PROPERTIES
+        PUBLIC_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp"
 )
 
-# Tells CMake where header files the target depends on can be found
-target_include_directories(
-    ${lib_name} PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
-    $<INSTALL_INTERFACE:include/>
+# Tells cmake that the header file can be found in hello_world/include during build
+# and then install_prefix/include during install
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-# Installs the library and header files and associates it with an export target
+# Installs the library and target
 # "${lib_name}-targets"
 install(
-    TARGETS ${lib_name}
-    EXPORT "${lib_name}-targets"
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
+    TARGETS ${PROJECT_NAME}
+    EXPORT ${PROJECT_NAME}-targets
+    # Where to install the header file to
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/helloworld
+    # Where to install the static libraries (.a) to
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld
+    # Where to install the dynamic libraries (.dll/.so) to
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld
+    # Where to install the executalbe to
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}/helloworld
 )
 
-# Installs the export target
+# Exports the HelloWorld target
+# Tells CMake where to find files and build this project
 install(
-    EXPORT ${lib_name}-targets
-    NAMESPACE ${lib_name}::
-    FILE ${lib_name}Config.cmake
-    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/cmake
+    EXPORT ${PROJECT_NAME}-targets
+    NAMESPACE ${PROJECT_NAME}::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld/cmake
+)
+
+
+#message("HELLO: ${CMAKE_CURRENT_LIST_DIR}")
+
+# Install header(s)
+# install(FILES ${CMAKE_CURRENT_LIST_DIR}/include/hello-world.hpp
+#   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+# )
+
+include(CMakePackageConfigHelpers)
+
+# Grab config template and add extra logic to it
+# Config template has info on dependencies
+set(config_file_name "${PROJECT_BINARY_DIR}/helloworld-config.cmake")
+configure_package_config_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
+    "${config_file_name}"
+    INSTALL_DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/cmake/helloworld
+)
+
+# Export package config file
+install(FILES
+    "${config_file_name}"
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld/cmake
 )
