@@ -54,9 +54,6 @@ install(
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld/cmake
 )
 
-
-#message("HELLO: ${CMAKE_CURRENT_LIST_DIR}")
-
 # Install header(s)
 # install(FILES ${CMAKE_CURRENT_LIST_DIR}/include/hello-world.hpp
 #   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
