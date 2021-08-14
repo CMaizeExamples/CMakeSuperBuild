@@ -6,6 +6,7 @@ set(stage_directory "${CMAKE_BINARY_DIR}/stage${CMAKE_INSTALL_PREFIX}")
 
 # Tell compiler to not include debug flags
 set(CMAKE_BUILD_TYPE_INIT "Release")
+set(EXTERNAL_DIR "helloworld/external")
 
 include(ExternalProject)
 include(GNUInstallDirs)
@@ -21,15 +22,15 @@ ExternalProject_Add(
         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
         -DCMAKE_INSTALL_PREFIX:PATH=${stage_directory}
         # Switch install path to be inside .../helloworld
-        -DCMAKE_INSTALL_INCLUDEDIR=${CMAKE_INSTALL_INCLUDEDIR}/helloworld/external
-        -DCMAKE_INSTALL_LIBDIR=${CMAKE_INSTALL_LIBDIR}/helloworld/external
-        -DCMAKE_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR}/helloworld/external
+        -DCMAKE_INSTALL_INCLUDEDIR=${CMAKE_INSTALL_INCLUDEDIR}/${EXTERNAL_DIR}
+        -DCMAKE_INSTALL_LIBDIR=${CMAKE_INSTALL_LIBDIR}/${EXTERNAL_DIR}
+        -DCMAKE_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR}/${EXTERNAL_DIR}
     BUILD_ALWAYS ON
 )
 
 # Tells find_package where to look for config files
 list(APPEND CMAKE_PREFIX_PATH ${stage_directory}) # Location of helloworld's config
-list(APPEND CMAKE_PREFIX_PATH ${stage_directory}/${CMAKE_INSTALL_LIBDIR}/helloworld/external) # Location of helloworld's dependencies configs
+list(APPEND CMAKE_PREFIX_PATH ${stage_directory}/${CMAKE_INSTALL_LIBDIR}/${EXTERNAL_DIR}) # Location of helloworld's dependencies configs
 
 #External Project Add doesn't work well with ';' as a list seperator
 string(REPLACE ";" "|" CMAKE_PREFIX_TEMP "${CMAKE_PREFIX_PATH}")
