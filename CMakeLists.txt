@@ -31,16 +31,20 @@ ExternalProject_Add(
 list(APPEND CMAKE_PREFIX_PATH ${stage_directory}) # Location of helloworld's config
 list(APPEND CMAKE_PREFIX_PATH ${stage_directory}/${CMAKE_INSTALL_LIBDIR}/helloworld/external) # Location of helloworld's dependencies configs
 
+#External Project Add doesn't work well with ';' as a list seperator
+string(REPLACE ";" "|" CMAKE_PREFIX_TEMP "${CMAKE_PREFIX_PATH}")
+
 # Builds the main library and installs it to the staging directory
 # Allows CMakePublic to build first since it's a dependency
 ExternalProject_Add(
     "${PROJECT_NAME}_core"
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/hello_world"
+    LIST_SEPARATOR |
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
 	    -DCMAKE_INSTALL_PREFIX:PATH=${stage_directory}
-        -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}
+        -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_TEMP}
     DEPENDS CMakePublic
     BUILD_ALWAYS ON
 )
