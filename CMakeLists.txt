@@ -15,8 +15,7 @@ include(GNUInstallDirs)
 # TODO add find package line here to check if we should externally add project
 ExternalProject_Add(
     CMakePublic
-    #GIT_REPOSITORY "https://github.com/CMaizeExamples/CMakePublic"
-    GIT_REPOSITORY "https://github.com/TheodoreDavis/CMakePublic"
+    GIT_REPOSITORY "https://github.com/CMaizeExamples/CMakePublic"
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}

@@ -28,7 +28,14 @@ set_target_properties(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME}
     PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/helloworld>
+)
+
+# Include header for any dependencies
+target_include_directories(CMakePublic::CMakePublic
+    INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_INSTALL_FULL_INCLUDEDIR}/helloworld>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/helloworld>
 )
 
 # Installs the library and target
