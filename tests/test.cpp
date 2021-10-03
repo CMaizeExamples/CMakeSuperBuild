@@ -3,7 +3,7 @@
  */
 
 #include <iostream>
-#include <hello-world.hpp>
+#include <helloworld/hello-world.hpp>
 
 int main() {
     std::cout << say_hello() << std::endl;

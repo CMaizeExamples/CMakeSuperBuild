@@ -6,7 +6,7 @@ set(stage_directory "${CMAKE_BINARY_DIR}/stage${CMAKE_INSTALL_PREFIX}")
 
 # Tell compiler to not include debug flags
 set(CMAKE_BUILD_TYPE_INIT "Release")
-set(EXTERNAL_DIR "helloworld/external")
+set(EXTERNAL_DIR "helloworld/cmake/external")
 
 include(ExternalProject)
 include(GNUInstallDirs)
@@ -15,7 +15,7 @@ include(GNUInstallDirs)
 # TODO add find package line here to check if we should externally add project
 ExternalProject_Add(
     CMakePublic
-    GIT_REPOSITORY "https://github.com/CMaizeExamples/CMakePublic"
+    GIT_REPOSITORY "https://github.com/TheodoreDavis/CMakePublic"
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
