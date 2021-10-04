@@ -1,5 +1,5 @@
-#include "hello-world.hpp"
-#include "cmakepublic/cmake_public.hpp"
+#include "helloworld/hello-world.hpp"
+#include <cmakepublic/cmake_public.hpp>
 
 std::string say_goodbye() {
     int val = call_cmake_public();

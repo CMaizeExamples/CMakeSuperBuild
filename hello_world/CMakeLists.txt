@@ -20,7 +20,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC CMakePublic::CMakePublic)
 # Declares that this library has one public header file
 set_target_properties(${PROJECT_NAME}
     PROPERTIES
-        PUBLIC_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/hello-world.hpp"
+        PUBLIC_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/helloworld/hello-world.hpp"
 )
 
 # Tells cmake that the header file can be found in hello_world/include during build
@@ -30,6 +30,13 @@ target_include_directories(${PROJECT_NAME}
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
+
+# # Include header for any dependencies
+# target_include_directories(CMakePublic::CMakePublic
+#     INTERFACE
+#         $<BUILD_INTERFACE:${CMAKE_INSTALL_FULL_INCLUDEDIR}/helloworld>
+#         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/helloworld>
+# )
 
 # Installs the library and target
 # "${lib_name}-targets"
@@ -53,9 +60,6 @@ install(
     NAMESPACE ${PROJECT_NAME}::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/helloworld/cmake
 )
-
-
-#message("HELLO: ${CMAKE_CURRENT_LIST_DIR}")
 
 # Install header(s)
 # install(FILES ${CMAKE_CURRENT_LIST_DIR}/include/hello-world.hpp
