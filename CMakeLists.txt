@@ -6,7 +6,7 @@ set(stage_directory "${CMAKE_BINARY_DIR}/stage${CMAKE_INSTALL_PREFIX}")
 
 # Tell compiler to not include debug flags
 set(CMAKE_BUILD_TYPE_INIT "Release")
-set(EXTERNAL_DIR "helloworld/cmake/external")
+set(EXTERNAL_DIR "helloworld/external")
 
 include(ExternalProject)
 include(GNUInstallDirs)
