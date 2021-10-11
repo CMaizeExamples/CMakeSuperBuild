@@ -15,12 +15,12 @@ include(GNUInstallDirs)
 # TODO add find package line here to check if we should externally add project
 ExternalProject_Add(
     CMakePublic
-    GIT_REPOSITORY "https://github.com/TheodoreDavis/CMakePublic"
+    GIT_REPOSITORY "https://github.com/CMaizeExamples/CMakePublic"
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
         -DCMAKE_INSTALL_PREFIX:PATH=${stage_directory}
-        # Switch install path to be inside .../helloworld
+        # Switch install path to be inside .../helloworld/cmake/external
         -DCMAKE_INSTALL_INCLUDEDIR=${CMAKE_INSTALL_INCLUDEDIR}/${EXTERNAL_DIR}
         -DCMAKE_INSTALL_LIBDIR=${CMAKE_INSTALL_LIBDIR}/${EXTERNAL_DIR}
         -DCMAKE_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR}/${EXTERNAL_DIR}
